@@ -1,0 +1,36 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /ems
+
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+  datasource:
+    #type: com.alibba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ems_thymeleaf?characterEncoding=utf-8&allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: root
+
+  web:
+    resources:
+      #暴露哪些资源可以通过项目名访问
+      static-locations: classpath:/static/, file:${photo.file.dir}
+
+mybatis:
+  mapper-locations: classpath*:com/springboot/ems/mapper/xml/*Mapper.xml
+  #type-aliases-package: com.springboot.ems.entity
+
+logging:
+  level:
+    root: info
+    com.springboot.ems: debug
+
+#指定文件上传位置
+photo:
+  file:
+    dir: C:\Users\liush\LIUSHICHENG\IT\Spring\Projects\ems\photos
